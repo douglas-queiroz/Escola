@@ -1,32 +1,31 @@
-<p id="notice"><%= notice %></p>
+<h1>Visualizar Professor</h1>
+
+<% if notice != nil %>
+<p id="notice" class="bg-success"><%= notice %></p>
+<% end %>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @teacher.name %>
 </p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @teacher.user.name %>
+  <strong>Aniversário:</strong>
+  <%= formatar_data(@teacher.birth) %>
 </p>
 
 <p>
-  <strong>Birth:</strong>
-  <%= @teacher.birth %>
+  <strong>Sexo:</strong>
+  <%= Teacher::Sex[@teacher.sex] %>
 </p>
 
 <p>
-  <strong>Sex:</strong>
-  <%= @teacher.sex %>
-</p>
-
-<p>
-  <strong>Cpf:</strong>
+  <strong>CPF:</strong>
   <%= @teacher.cpf %>
 </p>
 
 <p>
-  <strong>Street:</strong>
+  <strong>Rua:</strong>
   <%= @teacher.street %>
 </p>
 
@@ -36,29 +35,29 @@
 </p>
 
 <p>
-  <strong>Comp:</strong>
+  <strong>Complemento:</strong>
   <%= @teacher.comp %>
 </p>
 
 <p>
-  <strong>Neighborhood:</strong>
+  <strong>Bairro:</strong>
   <%= @teacher.neighborhood %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong>Cidade:</strong>
   <%= @teacher.city %>
 </p>
 
 <p>
-  <strong>State:</strong>
+  <strong>Estado:</strong>
   <%= @teacher.state %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong>Telefone:</strong>
   <%= @teacher.phone %>
 </p>
 
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
-<%= link_to 'Back', teachers_path %>
+<%= link_to 'Editar', edit_teacher_path(@teacher), :class=>"btn btn-default" %>
+<%= link_to 'Voltar', teachers_path, :class=>"btn btn-default" %>
