@@ -1,11 +1,14 @@
 <h1>Lista de Turmas</h1>
 
+<br>
+<%= link_to 'Nova Turma', new_student_class_path, :class=>"btn btn-default" %>
+<br>
 <table class="table">
   <thead>
     <tr>
-      <th>Descrição</th>
-      <th>Turno</th>
-      <th>Ação</th>
+      <th style="width: 500px;">Descrição</th>
+      <th style="width: 200px;">Turno</th>
+      <th style="width: 200px;">Ação</th>
     </tr>
   </thead>
 
@@ -14,14 +17,10 @@
       <tr>
         <td><%= student_class.description %></td>
         <td><%= student_class.turn %></td>
-        <td><%= link_to 'Show', student_class %></td>
-        <td><%= link_to 'Edit', edit_student_class_path(student_class) %></td>
-        <td><%= link_to 'Destroy', student_class, method: :delete, data: { confirm: 'Deseja realmente excluir?' } %></td>
+        <td><%= link_to 'Visualizar', student_class, :class=>"btn btn-default" %>
+        <%= link_to 'Editar', edit_student_class_path(student_class), :class=>"btn btn-primary" %>
+        <%= link_to 'Excluir', student_class, method: :delete, data: { confirm: 'Deseja realmente excluir?' }, :class=>"btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Student class', new_student_class_path %>

@@ -11,15 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+  <div class="form-group">
+    <label>Descrição</label>
+    <%= f.text_field :description, :class=>"form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :turn %><br>
-    <%= f.number_field :turn %>
+
+  <!-- TODO: ajustar o combobox -->
+  <div class="form-group">
+    <label>Turno</label>
+    <select class="form-control" id="student_class_turn">
+      <option value="1">Manhã</option>
+      <option value="2">Tarde</option>
+      <option value="3">Noite</option>
+    </select>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <%= link_to 'Voltar', student_classes_path, :class=>"btn btn-default" %>
   </div>
 <% end %>

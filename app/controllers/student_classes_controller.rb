@@ -28,7 +28,7 @@ class StudentClassesController < ApplicationController
 
     respond_to do |format|
       if @student_class.save
-        format.html { redirect_to @student_class, notice: 'Student class was successfully created.' }
+        format.html { redirect_to @student_class, notice: 'Turma criada com sucesso.' }
         format.json { render :show, status: :created, location: @student_class }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class StudentClassesController < ApplicationController
   def update
     respond_to do |format|
       if @student_class.update(student_class_params)
-        format.html { redirect_to @student_class, notice: 'Student class was successfully updated.' }
+        format.html { redirect_to @student_class, notice: 'Turma atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @student_class }
       else
         format.html { render :edit }
