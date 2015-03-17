@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   resources :users
 
+  root :to => "home#index"
+  match 'home/sign_in' => 'home#sign_in', via: 'post'
+  match 'sign_out' => 'home#sign_out', via: 'get'
+  match 'dashboard' => 'home#dashboard', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
