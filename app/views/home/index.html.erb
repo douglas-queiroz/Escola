@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<!-- Apple devices fullscreen -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- Apple devices fullscreen -->
+	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	
+	<title>FLAT - Login</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Bootstrap responsive -->
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+	<!-- icheck -->
+	<link rel="stylesheet" href="css/plugins/icheck/all.css">
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Color CSS -->
+	<link rel="stylesheet" href="css/themes.css">
+
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	
+	<!-- Nice Scroll -->
+	<script src="js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<!-- Validation -->
+	<script src="js/plugins/validation/jquery.validate.min.js"></script>
+	<script src="js/plugins/validation/additional-methods.min.js"></script>
+	<!-- icheck -->
+	<script src="js/plugins/icheck/jquery.icheck.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/eakroko.js"></script>
+
+	<!--[if lte IE 9]>
+		<script src="js/plugins/placeholder/jquery.placeholder.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('input, textarea').placeholder();
+			});
+		</script>
+	<![endif]-->
+	
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico" />
+	<!-- Apple devices Homescreen icon -->
+	<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
+
+</head>
+
+<body class='login'>
+	<div class="wrapper">
+		<h1><a href="index.html"><img src="img/logo-big.png" alt="" class='retina-ready' width="59" height="49">SegPlus</a></h1>
+		<div class="login-body">
+			<h2>Entrar</h2>
+			<%= form_for(:user, :url => {:controller => 'home', :action => 'sign_in'}) do |f| %>
+				<div class="control-group">
+					<div class="email controls">
+						<%= f.text_field :login, :class => "input-block-level", :placeholder => "Usuário"  %>
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="pw controls">
+						<%= f.password_field :password, :class => "input-block-level", :placeholder => "Senha" %>
+					</div>
+				</div>
+				<% if flash[:notice] %>
+					<div style="color: red; text-align: center;">
+						<span><%= notice %></span>
+					</div>
+				<% end %>
+				<div class="submit">
+					<input style="margin-bottom: 20px;" type="submit" value="Entrar" class='btn btn-primary'>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</body>
+
+</html>
