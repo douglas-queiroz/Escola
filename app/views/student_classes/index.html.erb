@@ -16,7 +16,7 @@
     <% @student_classes.each do |student_class| %>
       <tr>
         <td><%= student_class.description %></td>
-        <td><%= student_class.turn %></td>
+        <td><%= StudentClass::Turn[student_class.turn] %></td>
         <td><%= link_to 'Visualizar', student_class, :class=>"btn btn-default" %>
         <%= link_to 'Editar', edit_student_class_path(student_class), :class=>"btn btn-primary" %>
         <%= link_to 'Excluir', student_class, method: :delete, data: { confirm: 'Deseja realmente excluir?' }, :class=>"btn btn-danger" %></td>

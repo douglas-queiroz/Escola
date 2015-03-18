@@ -9,7 +9,7 @@
 
 <p>
   <strong>Turno:</strong>
-  <%= @student_class.turn %>
+  <%= StudentClass::Turn[@student_class.turn] %>
 </p>
 
 <%= link_to 'Editar', edit_student_class_path(@student_class), :class=>"btn btn-default" %>

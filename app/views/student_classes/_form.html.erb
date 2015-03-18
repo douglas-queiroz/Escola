@@ -16,11 +16,7 @@
   <!-- TODO: ajustar o combobox -->
   <div class="form-group">
     <label>Turno</label>
-    <select class="form-control" id="student_class_turn">
-      <option value="1">Manhã</option>
-      <option value="2">Tarde</option>
-      <option value="3">Noite</option>
-    </select>
+    <%= f.select :turn, StudentClass::Turn.map{|status| [status[1], status[0] ]}, {}, {:class=>"form-control"} %>
   </div>
   <div class="actions">
     <button type="submit" class="btn btn-primary">Salvar</button>
