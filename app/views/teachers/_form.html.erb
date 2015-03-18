@@ -1,20 +1,16 @@
 <%= form_for(@teacher) do |f| %>
-  <% if @teacher.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
-
-      <ul>
-      <% @teacher.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  
+  <div class="form-group <%= @teacher.errors[:name].any? == true ? 'has-error' : '' %>">
+    <label class="control-label">Nome</label>
+    <%= f.text_field :name, :class=>"form-control" %>
+    <% if @teacher.errors[:name].any? %>
+      <% @teacher.errors[:name].each do |message| %>
+        <span class="help-block"><%= message %></span>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <% end %>
   </div>
+
+
   <div class="field">
     <%= f.label :birth %><br>
     <%= f.date_select :birth %>
@@ -23,10 +19,17 @@
     <%= f.label :sex %><br>
     <%= f.number_field :sex %>
   </div>
-  <div class="field">
-    <%= f.label :cpf %><br>
-    <%= f.text_field :cpf %>
+
+  <div class="form-group <%= @teacher.errors[:cpf].any? == true ? 'has-error' : '' %>">
+    <label class="control-label">CPF</label>
+    <%= f.text_field :cpf, :class=>"form-control" %>
+    <% if @teacher.errors[:cpf].any? %>
+      <% @teacher.errors[:cpf].each do |message| %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    <% end %>
   </div>
+
   <div class="field">
     <%= f.label :street %><br>
     <%= f.text_field :street %>
