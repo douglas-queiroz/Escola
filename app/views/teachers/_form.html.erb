@@ -1,4 +1,4 @@
-<%= form_for(@teacher) do |f| %>
+<%= nested_form_for(@teacher) do |f| %>
   
   <div class="form-group <%= @teacher.errors[:name].any? == true ? 'has-error' : '' %>">
     <label class="control-label">Nome</label>
@@ -10,6 +10,20 @@
     <% end %>
   </div>
 
+  <%= f.fields_for :user do |ff| %>
+    <div class="form-group">
+      <label class="control-label">Usuário</label>
+      <%= ff.text_field :name, :class=>"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Senha</label>
+      <%= ff.password_field :password, :class=>"form-control" %>
+    </div>
+
+  <% end %>
+
+
   <div class="form-group <%= @teacher.errors[:birth].any? == true ? 'has-error' : '' %>">
     <label class="control-label">Data de nascimento</label>
     <%= f.text_field :birth, :class => "datepick form-control", :value => formatar_data(@teacher.birth) %>
@@ -19,7 +33,6 @@
       <% end %>
     <% end %>
   </div>
-
   
 
   <div class="form-group">
@@ -32,6 +45,16 @@
     <%= f.text_field :cpf, :class=>"form-control mask_cpf" %>
     <% if @teacher.errors[:cpf].any? %>
       <% @teacher.errors[:cpf].each do |message| %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group <%= @teacher.errors[:phone].any? == true ? 'has-error' : '' %>">
+    <label class="control-label">Telefone</label>
+    <%= f.text_field :phone, :class=>"form-control mask_fone" %>
+    <% if @teacher.errors[:phone].any? %>
+      <% @teacher.errors[:phone].each do |message| %>
         <span class="help-block"><%= message %></span>
       <% end %>
     <% end %>
@@ -97,18 +120,8 @@
     <% end %>
   </div>
 
-  <div class="form-group <%= @teacher.errors[:phone].any? == true ? 'has-error' : '' %>">
-    <label class="control-label">Telefone</label>
-    <%= f.text_field :phone, :class=>"form-control mask_fone" %>
-    <% if @teacher.errors[:phone].any? %>
-      <% @teacher.errors[:phone].each do |message| %>
-        <span class="help-block"><%= message %></span>
-      <% end %>
-    <% end %>
-  </div>
-
   <div class="actions">
     <button type="submit" class="btn btn-primary">Salvar</button>
-    <%= link_to 'Voltar', student_classes_path, :class=>"btn btn-default" %>
+    <%= link_to 'Voltar', teachers_path, :class=>"btn btn-default" %>
   </div>
 <% end %>

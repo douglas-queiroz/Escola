@@ -15,6 +15,7 @@ class TeachersController < ApplicationController
   # GET /teachers/new
   def new
     @teacher = Teacher.new
+    @teacher.user = User.new
   end
 
   # GET /teachers/1/edit
@@ -69,6 +70,6 @@ class TeachersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:name, :birth, :sex, :cpf, :street, :cep, :comp, :neighborhood, :city, :state, :phone)
+      params.require(:teacher).permit(:name, :birth, :sex, :cpf, :street, :cep, :comp, :neighborhood, :city, :state, :phone, user_attributes: [:id, :name, :password])
     end
 end

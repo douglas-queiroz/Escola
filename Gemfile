@@ -41,3 +41,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'brazilian-rails'
 
 gem 'validates_cpf_cnpj'
+
+gem "nested_form"
