@@ -10,11 +10,11 @@
     <% end %>
   </div>
 
-  <!-- TODO: ajustar o combobox -->
   <div class="form-group">
     <label>Turno</label>
     <%= f.select :turn, StudentClass::Turn.map{|status| [status[1], status[0] ]}, {}, {:class=>"form-control"} %>
   </div>
+  
   <div class="actions">
     <button type="submit" class="btn btn-primary">Salvar</button>
     <%= link_to 'Voltar', student_classes_path, :class=>"btn btn-default" %>
