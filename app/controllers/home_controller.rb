@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+	before_action :verify_login, only: [:dashboard]
 	def index
 		render layout: false
 	end
@@ -24,7 +25,7 @@ class HomeController < ApplicationController
 
 	def sign_out
 		session["user_id"] = nil
-		session["user_email"] = nil
+		session["name"] = nil
 		redirect_to :controller => "home", :action => "index"
 	end
 end

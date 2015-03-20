@@ -1,5 +1,6 @@
 class StudentClassesController < ApplicationController
   before_action :set_student_class, only: [:show, :edit, :update, :destroy]
+  before_action :verify_login
 
   # GET /student_classes
   # GET /student_classes.json
