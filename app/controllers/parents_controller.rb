@@ -63,6 +63,12 @@ class ParentsController < ApplicationController
     end
   end
 
+  def add_student
+    parent = Parent.find(params["parent_id"])
+    puts parent.name
+    format.json { render :show, status: :created, location: parent}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_parent

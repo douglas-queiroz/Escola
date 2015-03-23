@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :parents
+  match 'add_student' => 'parents#add_student', via: 'post'
 
   resources :students
 
