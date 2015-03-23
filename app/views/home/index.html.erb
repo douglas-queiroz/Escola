@@ -9,78 +9,39 @@
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	
-	<title>FLAT - Login</title>
+	<title>Olhe meu filho</title>
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Bootstrap responsive -->
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-	<!-- icheck -->
-	<link rel="stylesheet" href="css/plugins/icheck/all.css">
-	<!-- Theme CSS -->
-	<link rel="stylesheet" href="css/style.css">
-	<!-- Color CSS -->
-	<link rel="stylesheet" href="css/themes.css">
-
-
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	
-	<!-- Nice Scroll -->
-	<script src="js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
-	<!-- Validation -->
-	<script src="js/plugins/validation/jquery.validate.min.js"></script>
-	<script src="js/plugins/validation/additional-methods.min.js"></script>
-	<!-- icheck -->
-	<script src="js/plugins/icheck/jquery.icheck.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/eakroko.js"></script>
-
-	<!--[if lte IE 9]>
-		<script src="js/plugins/placeholder/jquery.placeholder.min.js"></script>
-		<script>
-			$(document).ready(function() {
-				$('input, textarea').placeholder();
-			});
-		</script>
-	<![endif]-->
-	
-
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="img/favicon.ico" />
-	<!-- Apple devices Homescreen icon -->
-	<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
+	<link rel="stylesheet" href="assets/bootstrap.min.css?body=1">
+	<link rel="stylesheet" href="assets/bootstrap-theme.min.css?body=1">
+	<link rel="stylesheet" href="assets/home.css?body=1">
 
 </head>
+<body>
 
-<body class='login'>
-	<div class="wrapper">
-		<h1><a href="index.html"><img src="img/logo-big.png" alt="" class='retina-ready' width="59" height="49">SegPlus</a></h1>
-		<div class="login-body">
-			<h2>Entrar</h2>
-			<%= form_for(:user, :url => {:controller => 'home', :action => 'sign_in'}) do |f| %>
-				<div class="control-group">
-					<div class="email controls">
-						<%= f.text_field :login, :class => "input-block-level", :placeholder => "Usuário"  %>
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="pw controls">
-						<%= f.password_field :password, :class => "input-block-level", :placeholder => "Senha" %>
-					</div>
-				</div>
-				<% if flash[:notice] %>
-					<div style="color: red; text-align: center;">
-						<span><%= notice %></span>
-					</div>
-				<% end %>
-				<div class="submit">
-					<input style="margin-bottom: 20px;" type="submit" value="Entrar" class='btn btn-primary'>
+    <div class="container">
+	    <%= form_for(:user, :url => {:controller => 'home', :action => 'sign_in'}, :html => {:class => "form-signin"}) do |f| %>
+	        <h2 class="form-signin-heading">Acessar o sistema</h2>
+	        <label for="inputEmail" class="sr-only">Usuário</label>
+	        <input type="text" id="user_name" name="user[name]" class="form-control" placeholder="Usuário" required="false" autofocus="true">
+	        <label for="inputPassword" class="sr-only">Senha</label>
+	        <input type="password" id="user_password" name="user[password]" class="form-control" placeholder="Senha" required="false">
+
+	        <% if flash[:notice] %>
+				<div style="color: red; text-align: center;">
+					<span><%= notice %></span>
 				</div>
 			<% end %>
-		</div>
-	</div>
+
+	        <div class="checkbox">
+	          <label>
+	            <input type="checkbox" value="remember-me"> Lembrar
+	          </label>
+	        </div>
+	        <button class="btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
+	    <% end %>
+    </div>  
+
 </body>
 
 </html>

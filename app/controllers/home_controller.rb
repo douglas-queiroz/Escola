@@ -8,7 +8,9 @@ class HomeController < ApplicationController
 	end
 
 	def sign_in
-		login = params[:user][:login]
+		puts params
+
+		login = params[:user][:name]
 		password = params[:user][:password]
 
 		user = User.where("name = ? and password = ?", login, password)[0]

@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150319174543) do
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
