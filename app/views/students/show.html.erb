@@ -1,0 +1,33 @@
+<h1>Visualizar Professor</h1>
+
+<% if notice != nil %>
+<p id="notice" class="bg-success"><%= notice %></p>
+<% end %>
+
+<p>
+  <strong>Matrícula:</strong>
+  <%= @student.registrations %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Data de Nacimento:</strong>
+  <%= formatar_data(@student.birth) %>
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= Teacher::Sex[@student.sex] %>
+</p>
+
+<p>
+  <strong>Turma:</strong>
+  <%= @student.student_class.description %>
+</p>
+
+<%= link_to 'Editar', edit_student_path(@student), :class=>"btn btn-default" %>
+<%= link_to 'Voltar', students_path, :class=>"btn btn-default" %>

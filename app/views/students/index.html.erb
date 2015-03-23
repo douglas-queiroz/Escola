@@ -1,0 +1,32 @@
+<h1>Lista de Alunos</h1>
+
+
+<br>
+<%= link_to 'Novo Aluno', new_student_path, :class=>"btn btn-default" %>
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Matrícula</th>
+      <th>Nome</th>
+      <th>Sexo</th>
+      <th>Turma</th>
+      <th width="300">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.registrations %></td>
+        <td><%= student.name %></td>
+        <td><%= Teacher::Sex[student.sex] %></td>
+        <td><%= student.student_class.description %></td>
+        <td><%= link_to 'Visualizar', student, :class=>"btn btn-default" %>
+        <%= link_to 'Editar', edit_student_path(student), :class=>"btn btn-default" %>
+        <%= link_to 'Excluir', student, method: :delete, data: { confirm: 'Deseja realmente excluir?' }, :class=>"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

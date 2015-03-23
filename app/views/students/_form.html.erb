@@ -1,0 +1,46 @@
+<%= form_for(@student) do |f| %>
+  <div class="form-group <%= @student.errors[:registrations].any? == true ? 'has-error' : '' %>">
+    <label class="control-label">Matrícula</label>
+    <%= f.text_field :registrations, :class=>"form-control" %>
+    <% if @student.errors[:registrations].any? %>
+      <% @student.errors[:registrations].each do |message| %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group <%= @student.errors[:name].any? == true ? 'has-error' : '' %>">
+    <label class="control-label">Nome</label>
+    <%= f.text_field :name, :class=>"form-control" %>
+    <% if @student.errors[:name].any? %>
+      <% @student.errors[:name].each do |message| %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="form-group <%= @student.errors[:birth].any? == true ? 'has-error' : '' %>">
+    <label class="control-label">Data Nascimento</label>
+    <%= f.text_field :birth, :class => "datepick form-control" %>
+    <% if @student.errors[:birth].any? %>
+      <% @student.errors[:birth].each do |message| %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="form-group">
+    <label>Sexo</label>
+    <%= f.select :sex, Teacher::Sex.map{|status| [status[1], status[0] ]}, {}, {:class=>"form-control"} %>
+  </div>
+
+  <div class="form-group <%= @student.errors[:student_class_id].any? == true ? 'has-error' : '' %>">
+    <label class="control-label">Turma</label>
+    <%= f.collection_select :student_class_id, @student_classes, :id, :description, {}, :class=>"form-control" %>
+  </div>
+
+  <div class="actions">
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <%= link_to 'Voltar', students_path, :class=>"btn btn-default" %>
+  </div>
+<% end %>
