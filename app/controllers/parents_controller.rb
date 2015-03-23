@@ -1,5 +1,6 @@
 class ParentsController < ApplicationController
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
+  before_action :verify_login
 
   # GET /parents
   # GET /parents.json
@@ -10,6 +11,7 @@ class ParentsController < ApplicationController
   # GET /parents/1
   # GET /parents/1.json
   def show
+    @students = Student.all
   end
 
   # GET /parents/new
@@ -28,7 +30,7 @@ class ParentsController < ApplicationController
 
     respond_to do |format|
       if @parent.save
-        format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
+        format.html { redirect_to @parent, notice: 'Responsável cadastrado com sucesso.' }
         format.json { render :show, status: :created, location: @parent }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class ParentsController < ApplicationController
   def update
     respond_to do |format|
       if @parent.update(parent_params)
-        format.html { redirect_to @parent, notice: 'Parent was successfully updated.' }
+        format.html { redirect_to @parent, notice: 'Responsável atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @parent }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class ParentsController < ApplicationController
   def destroy
     @parent.destroy
     respond_to do |format|
-      format.html { redirect_to parents_url, notice: 'Parent was successfully destroyed.' }
+      format.html { redirect_to parents_url, notice: 'Responsável excluido com sucesso.' }
       format.json { head :no_content }
     end
   end

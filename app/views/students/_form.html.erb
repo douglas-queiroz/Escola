@@ -21,7 +21,7 @@
   
   <div class="form-group <%= @student.errors[:birth].any? == true ? 'has-error' : '' %>">
     <label class="control-label">Data Nascimento</label>
-    <%= f.text_field :birth, :class => "datepick form-control" %>
+    <%= f.text_field :birth, :class => "datepick form-control", :value=>formatar_data(@student.birth) %>
     <% if @student.errors[:birth].any? %>
       <% @student.errors[:birth].each do |message| %>
         <span class="help-block"><%= message %></span>
