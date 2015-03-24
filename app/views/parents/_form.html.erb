@@ -1,4 +1,4 @@
-<%= form_for(@parent) do |f| %>
+<%= nested_form_for(@parent) do |f| %>
   <div class="form-group <%= @parent.errors[:name].any? == true ? 'has-error' : '' %>">
     <label class="control-label">Nome</label>
     <%= f.text_field :name, :class=>"form-control" %>
@@ -104,7 +104,23 @@
     <% end %>
   </div>
 
-  <div class="actions">
+  <%= f.fields_for :children do |ff| %>
+    <div class="form-group">
+      <label class="control-label">Aluno</label>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-8">
+          <%= ff.collection_select :student_id, @students, :id, :name, {}, :class=>"form-control" %>
+        </div>
+        <div class="col-xs-6 col-md-4 ">
+          <%= ff.link_to_remove "Excluir", :class=>"btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= f.link_to_add "Adicionar Aluno", :children, :class =>"btn btn-primary" %>
+  
+  <div class="actions" style="margin-top: 10px;">
     <button type="submit" class="btn btn-primary">Salvar</button>
     <%= link_to 'Voltar', parents_path, :class=>"btn btn-default" %>
   </div>

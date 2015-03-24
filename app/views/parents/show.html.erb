@@ -55,12 +55,12 @@
   <%= @parent.phone %>
 </p>
 
-<%= form_tag "/add_student", remote: true do %>
-  <%= hidden_field_tag "parent_id", @parent.id %>
-  <%= collection_select_tag "student_class_id", @student_classes, :id, :description, {}, :class=>"form-control" %>
-
-  <%= submit_tag "Save" %>
+<p>
+  <strong>Aluno(s):</strong>
+<% @parent.children.each do |child| %>
+  <%= child.student.name %>;
 <% end %>
+</p>
 
 <%= link_to 'Edit', edit_parent_path(@parent) %> |
 <%= link_to 'Back', parents_path %>
