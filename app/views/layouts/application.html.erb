@@ -18,15 +18,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="/dashboard">Meu Filho</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li id="dashboard"><a href="/dashboard">Home</a></li>
+            <li id="students"><a href="/students">Alunos</a></li>
+            <li id="student_classes"><a href="/student_classes">Turma</a></li>
+            <li id="teachers"><a href="/teachers">Professores</a></li>
+            <li id="parents"><a href="/parents">Pais</a></li>
           </ul>
-          <a href="/sign_out">Sair</a>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" style="color: white;"><b>Olá <%= session["name"] %>!</b></a></li>
+            <li><a href="/sign_out">Sair</a></li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -44,5 +50,22 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
+    <script type="text/javascript">
+      jQuery(document).ready(function($){
+        var url = window.location.pathname;
+
+        if(url.indexOf("/dashboard") == 0){
+          $("#dashboard").addClass("active");
+        }else if(url.indexOf("/students") == 0){
+          $("#students").addClass("active");
+        }else if(url.indexOf("/student_classes") == 0){
+          $("#student_classes").addClass("active");
+        }else if(url.indexOf("/teachers") == 0){
+          $("#teachers").addClass("active");
+        }else if(url.indexOf("/parents") == 0){
+          $("#parents").addClass("active");
+        }
+      });
+    </script>
 </body>
 </html>
