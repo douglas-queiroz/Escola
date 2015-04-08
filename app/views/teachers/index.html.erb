@@ -18,7 +18,7 @@
     <% @teachers.each do |teacher| %>
       <tr>
         <td><%= teacher.name %></td>
-        <td><%= Teacher::Sex[@teacher.sex] %></td>
+        <td><%= Teacher::Sex[teacher.sex] %></td>
         <td><%= teacher.cpf %></td>
         <td><%= teacher.phone %></td>
         <td><%= link_to 'Visualizar', teacher, :class=>"btn btn-default" %>

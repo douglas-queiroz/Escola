@@ -14,6 +14,5 @@ class Parent < ActiveRecord::Base
     validates_presence_of	:state, message: "Campo obrigatório"
     validates_presence_of	:phone, message: "Campo obrigatório"
 
-    usar_como_cpf :cpf
     validates_cpf :cpf
 end
