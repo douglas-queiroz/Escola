@@ -52,6 +52,22 @@
 
     <script type="text/javascript">
       jQuery(document).ready(function($){
+        carregarMascaras();
+        carregarMenuSelecionado();
+      });
+
+      function carregarMascaras(){
+        $('.mask_fone').mask('(99) 9999-9999');
+        $('.mask_cpf').mask('999.999.999-99');
+        $('.mask_cnpj').mask('99.999.999/9999-99');
+        $('.mask_cep').mask('99999-999');
+        $('.datepick').mask('99/99/9999');
+        $('.year').mask('9999');
+        $('.plate').mask('AAA-9999');
+
+      }
+
+      function carregarMenuSelecionado(){
         var url = window.location.pathname;
 
         if(url.indexOf("/dashboard") == 0){
@@ -65,7 +81,7 @@
         }else if(url.indexOf("/parents") == 0){
           $("#parents").addClass("active");
         }
-      });
+      }
     </script>
 </body>
 </html>

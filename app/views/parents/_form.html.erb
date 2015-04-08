@@ -29,7 +29,11 @@
     <%= f.text_field :cpf, :class=>"form-control mask_cpf" %>
     <% if @parent.errors[:cpf].any? %>
       <% @parent.errors[:cpf].each do |message| %>
-        <span class="help-block"><%= message %></span>
+        <% if message == "is invalid" %>
+          <span class="help-block">CPF inválido</span>
+        <% else %>
+          <span class="help-block"><%= message %></span>
+        <% end %>
       <% end %>
     <% end %>
   </div>

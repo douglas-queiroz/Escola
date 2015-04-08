@@ -14,18 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-jQuery(document).ready(function($){
-    carregarMascaras();
-});
-
-function carregarMascaras(){
-  $('.mask_fone').mask('(99) 9999-9999');
-  $('.mask_cpf').mask('999.999.999-99');
-  $('.mask_cnpj').mask('99.999.999/9999-99');
-  $('.mask_cep').mask('99999-999');
-  $('.datepick').mask('99/99/9999');
-  $('.year').mask('9999');
-  $('.plate').mask('AAA-9999');
-
-}

@@ -1,57 +1,61 @@
-<p id="notice"><%= notice %></p>
+<h1>Visualizar Professor</h1>
+
+<% if notice != nil %>
+  <p id="notice" class="bg-success"><%= notice %></p>
+<% end %>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @parent.name %>
 </p>
 
 <p>
-  <strong>Birth:</strong>
-  <%= @parent.birth %>
+  <strong>Nascimento:</strong>
+  <%= formatar_data(@parent.birth) %>
 </p>
 
 <p>
-  <strong>Sex:</strong>
-  <%= @parent.sex %>
+  <strong>Sexo:</strong>
+  <%= Teacher::Sex[@parent.sex] %>
 </p>
 
 <p>
-  <strong>Cpf:</strong>
+  <strong>CPF:</strong>
   <%= @parent.cpf %>
 </p>
 
 <p>
-  <strong>Street:</strong>
+  <strong>Rua:</strong>
   <%= @parent.street %>
 </p>
 
 <p>
-  <strong>Cep:</strong>
+  <strong>CEP:</strong>
   <%= @parent.cep %>
 </p>
 
 <p>
-  <strong>Comp:</strong>
+  <strong>Compl.:</strong>
   <%= @parent.comp %>
 </p>
 
 <p>
-  <strong>Neighborhood:</strong>
+  <strong>Bairro:</strong>
   <%= @parent.neighborhood %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong>Cidade:</strong>
   <%= @parent.city %>
 </p>
 
 <p>
-  <strong>State:</strong>
+  <strong>Estado:</strong>
   <%= @parent.state %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong>Telefone:</strong>
   <%= @parent.phone %>
 </p>
 
@@ -62,5 +66,5 @@
 <% end %>
 </p>
 
-<%= link_to 'Edit', edit_parent_path(@parent) %> |
-<%= link_to 'Back', parents_path %>
+<%= link_to 'Editar', edit_parent_path(@parent), :class=>"btn btn-default" %>
+<%= link_to 'Voltar', parents_path, :class=>"btn btn-default" %>
