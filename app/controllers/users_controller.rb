@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     @response = gcm.send(registration_ids, options)
     puts "teste #{response}"
 
+    require 'socket'
+    @ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
+    @ip.ip_address if @ip
+
     @users = User.all
   end
 
