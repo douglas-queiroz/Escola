@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     gcm = GCM.new("AIzaSyAoWGH5o7yE78YImhr4ji60reTvCtpmMxQ")
     registration_ids= ["APA91bHpprmR32AoTgEP2JfUVxbIgeUevMKUsAvpMJMCtc2klexNQ-g9v0YA5IoJB55DU2ieYcqCtoH_FKBAB3PGC315E19rGktNIdHBNJF_QodgsgRwpiGeISCvbFOoKt4audk5ccfCbWEtYdTwaMk0kiAOsvYq7Q"]
     options = {data: {title: "123", message: "TEstando a mensagem"}, collapse_key: "updated_score"}
-    response = gcm.send(registration_ids, options)
+    @response = gcm.send(registration_ids, options)
     puts "teste #{response}"
 
     @users = User.all
