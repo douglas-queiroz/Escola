@@ -37,6 +37,7 @@ class NotificationsController < ApplicationController
           notif = @notification
           notif.parent_id = parent.id
           notif.student_id = student.id
+          notif.status = 0
           registration_ids << parent.registration_id
 
           no_error = notif.save
@@ -53,7 +54,7 @@ class NotificationsController < ApplicationController
 
     respond_to do |format|
        if no_error
-         format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
+         format.html { redirect_to notifications_path, notice: 'Notification was successfully created.' }
         format.json { render :show, status: :created, location: @notification }
       else
         format.html { render :new }

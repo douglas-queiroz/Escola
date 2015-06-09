@@ -48,6 +48,8 @@ gem 'brazilian-rails'
 
 gem 'validates_cpf_cnpj'
 
+gem "twitter-bootstrap-rails"
+
 gem "nested_form"
 
 gem 'rails_12factor', group: :production

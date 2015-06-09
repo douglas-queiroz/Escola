@@ -27,6 +27,7 @@
             <li id="student_classes"><a href="/student_classes">Turma</a></li>
             <li id="teachers"><a href="/teachers">Professores</a></li>
             <li id="parents"><a href="/parents">Pais</a></li>
+            <li id="notifications"><a href="/notifications">Notificações</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
@@ -80,6 +81,8 @@
           $("#teachers").addClass("active");
         }else if(url.indexOf("/parents") == 0){
           $("#parents").addClass("active");
+        }else if(url.indexOf("/notifications") == 0){
+          $("#notifications").addClass("active");
         }
       }
     </script>
