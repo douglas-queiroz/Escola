@@ -53,3 +53,5 @@ gem "nested_form"
 gem 'rails_12factor', group: :production
 
 gem 'gcm'
+
+require 'rubygems'

@@ -1,6 +1,7 @@
 class ParentsController < ApplicationController
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
   before_action :verify_login
+  #skip_before_filter :verify_authenticity_token, :only => :login
 
   # GET /parents
   # GET /parents.json
@@ -24,6 +25,24 @@ class ParentsController < ApplicationController
   # GET /parents/1/edit
   def edit
     @students = Student.all
+  end
+
+  #POST
+  def login
+    login = params[:login]
+    senha = params[:senha]
+    registration = params[:registration_id]
+
+    @parent = Parent.where("cpf = ? and birth = ?", login, senha)[0]
+    if @parent
+      @parent.registration_id = registration
+      @parent.save
+    end
+
+    respond_to do |format|
+      format.json{ render json: @parent}
+    end
+    
   end
 
   # POST /parents

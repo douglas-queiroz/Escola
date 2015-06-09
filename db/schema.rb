@@ -11,13 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324181917) do
+ActiveRecord::Schema.define(version: 20150529000958) do
 
   create_table "children", force: true do |t|
     t.integer  "student_id"
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.integer  "student_class_id"
+    t.integer  "student_id"
+    t.string   "title"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "status"
   end
 
   create_table "parents", force: true do |t|
@@ -34,6 +45,12 @@ ActiveRecord::Schema.define(version: 20150324181917) do
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "registration_id"
+  end
+
+  create_table "parents_students", id: false, force: true do |t|
+    t.integer "student_id"
+    t.integer "parent_id"
   end
 
   create_table "student_classes", force: true do |t|

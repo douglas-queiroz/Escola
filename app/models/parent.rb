@@ -1,7 +1,8 @@
 class Parent < ActiveRecord::Base
-	has_many :children
-	accepts_nested_attributes_for :children,
-    :allow_destroy => true
+    has_and_belongs_to_many :students
+    has_many :notifications
+	# accepts_nested_attributes_for :children,
+ #    :allow_destroy => true
 
     validates_presence_of	:name, message: "Campo obrigatório"
     validates_presence_of	:birth, message: "Campo obrigatório"

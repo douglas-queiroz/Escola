@@ -1,5 +1,6 @@
 class StudentClass < ActiveRecord::Base
-	has_one :student
+	has_many :student
+	has_many :notifications
 
 	Turn = {
 		(MANHA = 0)=>"Manhã",

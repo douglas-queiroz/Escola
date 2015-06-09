@@ -1,0 +1,36 @@
+<%= form_for(@notification) do |f| %>
+
+  <div class="form-group <%= @notification.errors[:title].any? == true ? 'has-error' : '' %>">
+    <label class="control-label">Titulo</label>
+    <%= f.text_field :title, :class=>"form-control" %>
+    <% if @notification.errors[:title].any? %>
+      <% @notification.errors[:title].each do |message| %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group <%= @notification.errors[:message].any? == true ? 'has-error' : '' %>">
+    <label class="control-label">Mensagem</label>
+    <%= f.text_area :message, :class=>"form-control" %>
+    <% if @notification.errors[:message].any? %>
+      <% @notification.errors[:message].each do |message| %>
+        <span class="help-block"><%= message %></span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">Série</label>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-8">
+        <%= f.collection_select :student_class_id, @student_classes, :id, :description, {}, :class=>"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <%= link_to 'Voltar', notifications_path, :class=>"btn btn-default" %>
+  </div>
+<% end %>

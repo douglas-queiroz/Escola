@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :notifications
+
   resources :parents
   match 'add_student' => 'parents#add_student', via: 'post'
 
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
   match 'home/sign_in' => 'home#sign_in', via: 'post'
   match 'sign_out' => 'home#sign_out', via: 'get'
   match 'dashboard' => 'home#dashboard', via: 'get'
+
+  match 'login_parent' => 'parents#login', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

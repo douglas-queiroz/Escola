@@ -5,18 +5,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    
-
-    gcm = GCM.new("AIzaSyAoWGH5o7yE78YImhr4ji60reTvCtpmMxQ")
-    registration_ids= ["APA91bHpprmR32AoTgEP2JfUVxbIgeUevMKUsAvpMJMCtc2klexNQ-g9v0YA5IoJB55DU2ieYcqCtoH_FKBAB3PGC315E19rGktNIdHBNJF_QodgsgRwpiGeISCvbFOoKt4audk5ccfCbWEtYdTwaMk0kiAOsvYq7Q"]
-    options = {data: {title: "123", message: "TEstando a mensagem"}, collapse_key: "updated_score"}
-    @response = gcm.send(registration_ids, options)
-    puts "teste #{response}"
-
-    require 'socket'
-    @ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
-    @ip.ip_address if @ip
-
     @users = User.all
   end
 
