@@ -108,7 +108,7 @@
     <% end %>
   </div>
 
-  <%= f.fields_for :children do |ff| %>
+  <%= f.fields_for :student_parents do |ff| %>
     <div class="form-group">
       <label class="control-label">Aluno</label>
       <div class="row">
@@ -122,7 +122,7 @@
     </div>
   <% end %>
 
-  <%= f.link_to_add "Adicionar Aluno", :children, :class =>"btn btn-primary" %>
+  <%= f.link_to_add "Adicionar Aluno", :student_parents, :class =>"btn btn-primary" %>
   
   <div class="actions" style="margin-top: 10px;">
     <button type="submit" class="btn btn-primary">Salvar</button>

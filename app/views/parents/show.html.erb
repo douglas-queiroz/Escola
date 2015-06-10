@@ -61,8 +61,8 @@
 
 <p>
   <strong>Aluno(s):</strong>
-<% @parent.children.each do |child| %>
-  <%= child.student.name %>;
+<% @parent.student_parents.each do |sp| %>
+  <%= sp.student.name %>;
 <% end %>
 </p>
 

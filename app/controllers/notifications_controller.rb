@@ -32,7 +32,9 @@ class NotificationsController < ApplicationController
     registration_ids = [];
 
     class_student.student.each do |student|
-      student.parents.each do |parent|
+      student.student_parents.each do |sp|
+        parent = sp.parent
+
         if parent.registration_id != ""
           notif = @notification
           notif.parent_id = parent.id

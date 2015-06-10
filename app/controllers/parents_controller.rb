@@ -98,7 +98,7 @@ class ParentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parent_params
-      params.require(:parent).permit(:name, :birth, :sex, :cpf, :street, :cep, :comp, :neighborhood, :city, :state, :phone, children_attributes: [:id, :student_id, :_destroy])
+      params.require(:parent).permit(:name, :birth, :sex, :cpf, :street, :cep, :comp, :neighborhood, :city, :state, :phone, student_parents_attributes: [:id, :student_id, :_destroy])
     end
 
     def update_students
