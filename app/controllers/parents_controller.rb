@@ -18,7 +18,7 @@ class ParentsController < ApplicationController
   # GET /parents/new
   def new
     @parent = Parent.new
-    @parent.children << Child.new
+    @parent.student_parents << StudentParent.new
     @students = Student.all
   end
 
