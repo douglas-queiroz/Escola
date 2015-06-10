@@ -35,7 +35,7 @@ class NotificationsController < ApplicationController
       student.student_parents.each do |sp|
         parent = sp.parent
 
-        if parent.registration_id != ""
+        if parent.registration_id
           notif = @notification
           notif.parent_id = parent.id
           notif.student_id = student.id
