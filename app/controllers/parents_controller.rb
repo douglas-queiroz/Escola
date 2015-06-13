@@ -1,6 +1,6 @@
 class ParentsController < ApplicationController
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
-  before_action :verify_login
+  before_action :verify_login, except: [:login]
   #skip_before_filter :verify_authenticity_token, :only => :login
 
   # GET /parents
