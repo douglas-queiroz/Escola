@@ -7,10 +7,10 @@ class NotificationsController < ApplicationController
   # GET /notifications.json
   def index
     parent = params[:parent_id]
-    last_update = params[:last_update]
+    created_at = params[:created_at]
 
-    if parent && last_update
-      @notifications = Notification.where("parent_id = ? and updated_at > ?", parent, last_update);
+    if parent && created_at
+      @notifications = Notification.where("parent_id = ? and created_at > ?", parent, created_at);
     else
       @notifications = Notification.all
     end
