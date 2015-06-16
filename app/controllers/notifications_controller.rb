@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
     parent = params[:parent_id]
     last_update = params[:last_update]
 
-    if parent != "" && last_update != ""
+    if parent && last_update
       @notifications = Notification.where("parent_id = ? and updated_at > ?", parent, last_update);
     else
       @notifications = Notification.all
