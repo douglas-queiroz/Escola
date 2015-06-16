@@ -1,11 +1,18 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
-  before_action :verify_login
+  before_action :verify_login, except: [:index]
 
   # GET /notifications
   # GET /notifications.json
   def index
-    @notifications = Notification.all
+    parent = params[:parent_id]
+    last_update = params[:last_update]
+
+    if parent != "" && last_update != ""
+      @notifications = Notification.where("parent_id = ? and updated_at > ?", parent, last_update);
+    else
+      @notifications = Notification.all
+    end
   end
 
   # GET /notifications/1
@@ -47,8 +54,6 @@ class NotificationsController < ApplicationController
         end
       end
     end
-
-    puts "class = #{registration_ids}"
 
     gcm = GCM.new("AIzaSyAoWGH5o7yE78YImhr4ji60reTvCtpmMxQ")
     registration_ids= registration_ids
