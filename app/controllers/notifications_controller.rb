@@ -1,6 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
-  before_action :verify_login, except: [:index]
+  before_action :verify_login, except: [:index, :check]
+  protect_from_forgery except: [:check]
 
   # GET /notifications
   # GET /notifications.json
@@ -28,6 +29,19 @@ class NotificationsController < ApplicationController
 
   # GET /notifications/1/edit
   def edit
+  end
+
+  def check
+    ids = eval(params[:ids])
+
+    ids.each do |id|
+      puts "id = #{id}"
+      notification = Notification.find(id)
+      notification.status = 2
+      notification.save
+    end
+
+    render json: {status: :ok}
   end
 
   # POST /notifications
